@@ -1,4 +1,4 @@
-// swift-tools-version:4.2
+// swift-tools-version:5.0
 //
 //  Package.swift
 //  CoreStore
@@ -28,6 +28,9 @@ import PackageDescription
 
 let package = Package(
     name: "CoreStore",
+    platforms: [
+           .macOS(.v10_13), .iOS(.v12),
+        ],
     products: [
         .library(name: "CoreStore", type: .static, targets: ["CoreStore"])
     ],
