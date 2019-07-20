@@ -29,7 +29,7 @@ import PackageDescription
 let package = Package(
     name: "CoreStore",
     platforms: [
-           .macOS(.v10_13), .iOS(.v12),
+           .iOS(.v9),
         ],
     products: [
         .library(name: "CoreStore", type: .static, targets: ["CoreStore"])
