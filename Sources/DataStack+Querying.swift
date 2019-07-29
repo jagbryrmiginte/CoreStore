@@ -507,4 +507,11 @@ extension DataStack: FetchableSource, QueryableSource {
         
         return self.mainContext
     }
+    
+    func newUnsafeBackgroundContext() -> NSManagedObjectContext {
+        let newMoc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        newMoc.persistentStoreCoordinator = self.coordinator
+        newMoc.parentStack = self
+        return newMoc
+    }
 }
