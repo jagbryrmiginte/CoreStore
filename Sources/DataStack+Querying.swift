@@ -508,7 +508,10 @@ extension DataStack: FetchableSource, QueryableSource {
         return self.mainContext
     }
     
-    func newUnsafeBackgroundContext() -> NSManagedObjectContext {
+    /**
+     Creates a new background-queue `NSManagedObjectContext`, which does no automatic change propagation to ther other contexts.
+     */
+    public func newUnsafeBackgroundContext() -> NSManagedObjectContext {
         let newMoc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         newMoc.persistentStoreCoordinator = self.coordinator
         newMoc.parentStack = self
