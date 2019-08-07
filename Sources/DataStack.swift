@@ -590,8 +590,10 @@ public final class DataStack: Equatable {
     }
     
     internal func entityDescription(for entityIdentifier: EntityIdentifier) -> NSEntityDescription? {
-        
-        return self.schemaHistory.entityDescriptionsByEntityIdentifier[entityIdentifier]
+        let coordinator = self.coordinator
+        return coordinator.performSynchronously {
+            self.schemaHistory.entityDescriptionsByEntityIdentifier[entityIdentifier]
+        }
     }
     
     
